@@ -35,7 +35,10 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'django_summernote',
     'jet.dashboard',
+    'customers',
+    'production_house',
     'jet',
     'django.contrib.admin',
     'django.contrib.auth',
