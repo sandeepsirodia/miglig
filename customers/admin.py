@@ -20,6 +20,22 @@ class CustomerAdmin(SuperModelAdmin, SummernoteModelAdmin):
     model = Customer
     list_display = ['pk', 'name', 'photo', 'email', 'mobile', 'old_mobile']
 
+        
+class CustomerTokenAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = CustomerToken
+    list_display = ['pk', 'user', 'token']
+
+        
+class CustomerOtpAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = CustomerOtp
+    list_display = ['pk', 'user', 'code', 'valid']
+
+
+        
+class CustomerPasswordAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = CustomerPassword
+    list_display = ['pk', 'user', 'password_open']
+
 
 
 admin.site.register(Customer, CustomerAdmin)
