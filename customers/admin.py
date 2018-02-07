@@ -22,4 +22,4 @@ class CustomerAdmin(SuperModelAdmin, SummernoteModelAdmin):
 
 
 
-admin.site.register(Customer, CustomerAdmin)
+admin.site.register(Customer)
