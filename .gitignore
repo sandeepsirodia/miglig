@@ -1,8 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+
 #miglig/__pycache__
 #miglig/local_setting
 #requirements.txt
 miglig.sock
 static/
 
+/miglig/__pycache__
+/miglig/local_setting
+requirements.txt
+.gitignore
