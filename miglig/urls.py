@@ -14,8 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import include, url
 from django.urls import path
+from rest_framework import routers
+from customers.api import *
+
+router = routers.SimpleRouter()
+router.register(r'api/user', CustomerViewSet, "user")
+
 
 urlpatterns = [
+	url(r'^jet/', include('jet.urls', 'jet')),
+	url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += router.urls
