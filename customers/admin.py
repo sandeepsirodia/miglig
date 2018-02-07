@@ -38,4 +38,9 @@ class CustomerPasswordAdmin(SuperModelAdmin, SummernoteModelAdmin):
 
 
 
-admin.site.register(Customer)
+
+admin.site.register(Customer, CustomerAdmin)
+admin.site.register(CustomerToken, CustomerTokenAdmin)
+admin.site.register(CustomerOtp, CustomerOtpAdmin)
+admin.site.register(CustomerPassword, CustomerPasswordAdmin)
+
