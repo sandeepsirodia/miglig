@@ -18,6 +18,7 @@ from django.conf.urls import include, url
 from django.urls import path
 from rest_framework import routers
 from customers.api import *
+from django.views.generic import TemplateView
 
 router = routers.SimpleRouter()
 router.register(r'api/user', CustomerViewSet, "user")
@@ -26,7 +27,8 @@ router.register(r'api/user', CustomerViewSet, "user")
 urlpatterns = [
 	url(r'^jet/', include('jet.urls', 'jet')),
 	url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    path('admin/', admin.site.urls),
+	url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+	path('admin/', admin.site.urls),
 ]
 
 urlpatterns += router.urls
