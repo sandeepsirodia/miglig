@@ -37,6 +37,7 @@ DEBUG = True
 INSTALLED_APPS = [
     'django_summernote',
     'jet.dashboard',
+    'common',
     'customers',
     'production_house',
     'jet',
