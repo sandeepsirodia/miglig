@@ -8,8 +8,17 @@
 miglig.sock
 static/
 
-#/miglig/__pycache__
+/miglig/__pycache__
 /miglig/local_setting
 requirements.txt
 .gitignore
+__pycache__
 __pycache__/
+/__pycache__/
+*/__pycache__
+*/__pycache__/
+*./__pycache__/
+
+*/__pycache__/*
+
+
