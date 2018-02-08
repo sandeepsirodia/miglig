@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'customers',
     'production_house',
     'jet',
+    'rest_framework_swagger',
     'storages',
     'django.contrib.admin',
     'django.contrib.auth',

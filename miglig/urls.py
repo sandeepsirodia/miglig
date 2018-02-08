@@ -19,9 +19,11 @@ from django.urls import path
 from rest_framework import routers
 from customers.api import *
 from django.views.generic import TemplateView
+from rest_framework_swagger.views import get_swagger_view
 
 router = routers.SimpleRouter()
 router.register(r'api/user', CustomerViewSet, "user")
+schema_view = get_swagger_view(title='Pastebin API')
 
 
 urlpatterns = [
@@ -29,6 +31,7 @@ urlpatterns = [
 	url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 	url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 	path('admin/', admin.site.urls),
+    url(r'^swagger$', schema_view)
 ]
 
 urlpatterns += router.urls
