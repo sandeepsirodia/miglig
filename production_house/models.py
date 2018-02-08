@@ -4,7 +4,6 @@ import datetime
 
 from datetime import timedelta
 from django.utils import timezone
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -14,11 +13,11 @@ from django.core.validators import MinValueValidator
 
 class Company(models.Model):
 
-    name = models.CharField(blank = True, null = True, max_length = 50, verbose_name = "Truck RC number")
+    name = models.CharField(blank = True, null = True, max_length = 50)
     logo = models.ImageField(blank = True, null = True)
     email =  models.CharField(blank = True, null = True, max_length = 30)
     contact_name =  models.CharField(blank = True, null = True, max_length = 20)
-    contact_mobile =  models.IntegerField(blank = True, null = True, max_length = 20)
+    contact_mobile =  models.IntegerField(blank = True, null = True)
     landline = models.IntegerField(blank = True, null = True)
     video_count = models.IntegerField(blank = True, null = True)
     
@@ -29,7 +28,7 @@ class Company(models.Model):
         return str(self.pk)
 
     class Meta:
-        verbose_name_plural = "Customer"
+        verbose_name_plural = "Company"
 
 
 
