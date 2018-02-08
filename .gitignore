@@ -12,4 +12,10 @@ static/
 /miglig/local_setting
 requirements.txt
 .gitignore
+__pycache__
 __pycache__/
+/__pycache__/
+*/__pycache__
+*/__pycache__/
+*./__pycache__/
+
