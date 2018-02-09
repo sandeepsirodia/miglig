@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from customers.models import *
-from static_data.serializers import *
 
 
 class CustomerSerializer(serializers.ModelSerializer):

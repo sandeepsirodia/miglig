@@ -32,6 +32,7 @@ DEBUG = True
 # ALLOWED_HOSTS = [ ]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'customers',
     'production_house',
     'jet',
+    'rest_framework',
     'rest_framework_swagger',
     'storages',
     'django.contrib.admin',
@@ -78,6 +80,54 @@ TEMPLATES = [
         },
     },
 ]
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.AllowAny',
+#     ),
+#     'DEFAULT_PARSER_CLASSES': [
+#         'rest_framework.parsers.FormParser',
+#         'rest_framework.parsers.MultiPartParser',
+#         'rest_framework.parsers.JSONParser',
+#     ]
+# }
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+    ]
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'token': {
+            'type': 'apiKey',
+            'name': 'AUTHORIZATION',
+            'in': 'header',
+        }
+    },
+    'JSON_EDITOR': True,
+}
+
+
+# REST_FRAMEWORK = {
+#     'PAGE_SIZE': 100,
+#     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.SessionAuthentication',
+#     ),
+# }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ],
+# }
 
 WSGI_APPLICATION = 'miglig.wsgi.application'
 

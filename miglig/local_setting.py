@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
     'localhost:4200',
     'localhost:8000',
     'localhost',
+    '127.0.0.1',
     'http://127.0.0.1',
     'http://www.miglig.com',
     'https://miglig.com',

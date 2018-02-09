@@ -1,3 +1,5 @@
+import hashlib
+
 from django.contrib.auth.models import User
 
 from django.contrib.auth import login as django_login
@@ -13,6 +15,7 @@ from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import *
+from .serializers import *
 
 class CustomerViewSet(viewsets.ViewSet):
 
@@ -21,21 +24,11 @@ class CustomerViewSet(viewsets.ViewSet):
 		"""
 		---
 		parameters:
-				- name: mobile
-				  description: mobile
-				  required: false
-				  type: string
-				  paramType: form
-				- name: email
-				  description: email
-				  required: false
-				  type: string
-				  paramType: form
-				- name: password
-				  description: password
-				  required: true
-				  type: string
-				  paramType: form
+				- in: query
+			      name: offset
+			      schema:
+			        type: integer
+			      description: The number of items to skip before starting to collect the result set
 				
 		"""
 		
@@ -132,10 +125,32 @@ class CustomerViewSet(viewsets.ViewSet):
 
 		if not Customer.objects.filter(mobile = mobile, is_deleted = False).exists():
 			# write finction to send sms
+			pass
 		else:
 			response["result"] = 0
 			response["errors"] = ["Mobile already exists"]
 			return Response(response, status=status.HTTP_200_OK)
+		return Response(response, status=status.HTTP_200_OK)
+
+	@list_route(methods = ['post'])
+	def test(self, request):
+		"""
+		---
+		parameters:
+				- name: mobile
+				  description: mobile
+				  required: true
+				  type: string
+				  paramType: form
+				- name: email
+				  description:email
+				  required: true
+				  type: string
+				  paramType: form
+				
+		"""
+		
+		response = {}
 		return Response(response, status=status.HTTP_200_OK)
 
 

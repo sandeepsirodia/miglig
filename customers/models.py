@@ -1,6 +1,7 @@
 import os
 import random
 import datetime
+import hashlib
 
 from datetime import timedelta
 from django.utils import timezone
