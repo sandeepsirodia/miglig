@@ -20,8 +20,8 @@ class Customer(models.Model):
     name = models.CharField(blank = True, null = True, max_length = 50)
     photo = models.ImageField(blank = True, null = True)
     email =  models.CharField(blank = True, null = True, max_length = 30)
-    mobile =  models.IntegerField(blank = True, null = True)
-    old_mobile = models.IntegerField(blank = True, null = True)
+    mobile =  models.CharField(blank = True, null = True, max_length = 15)
+    old_mobile = models.CharField(blank = True, null = True, max_length = 15)
     
     is_deleted = models.BooleanField(default = False)
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
