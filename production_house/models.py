@@ -20,8 +20,8 @@ class Company(models.Model):
     logo = models.ImageField(blank = True, null = True)
     email =  models.CharField(blank = True, null = True, max_length = 30)
     contact_name =  models.CharField(blank = True, null = True, max_length = 20)
-    contact_mobile =  models.IntegerField(blank = True, null = True)
-    landline = models.IntegerField(blank = True, null = True)
+    contact_mobile =  models.CharField(blank = True, null = True, max_length = 15)
+    landline = models.CharField(blank = True, null = True, max_length = 18)
     video_count = models.IntegerField(blank = True, null = True)
     
     is_deleted = models.BooleanField(default = False)
