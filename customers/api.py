@@ -212,6 +212,7 @@ class CustomerViewSet(viewsets.ViewSet):
 					response["result"] = 1
 					response["token"] = customer_token.token
 					response["data"] = serializer
+					return Response(response, status=status.HTTP_200_OK)
 
 				else:
 					response["result"] = 0
