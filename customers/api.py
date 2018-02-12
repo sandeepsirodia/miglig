@@ -102,6 +102,35 @@ class CustomerViewSet(viewsets.ViewSet):
 			return Response(response, status=status.HTTP_200_OK)	
 
 
+
+	@list_route(methods = ['post'])
+	def logout(self, request):
+		"""
+		---
+		parameters:
+				- name: token
+				  description: Transporter access token
+				  required: true
+				  type: string
+				  paramType: form
+				
+		"""
+		
+		response = {}
+
+		token = request.data["token"]
+
+		if CustomerToken.objects.filter(token = token).exists():
+			CustomerToken.objects.get(token = token).delete()
+			response["result"] = 1
+			response["message"] = "logout succesfullt"
+			return Response(response, status=status.HTTP_200_OK)
+		else:
+			response["result"] = 0
+			response["errors"] = ["Invalid token"]
+			return Response(response, status=status.HTTP_200_OK)	
+
+
 	@list_route(methods = ['post'])
 	def verify_mobile(self, request):
 		"""
