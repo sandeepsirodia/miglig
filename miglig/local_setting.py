@@ -16,6 +16,7 @@ ALLOWED_HOSTS = [
 	'159.89.162.102',
     'http://127.0.0.1:8000',
     'localhost:4200',
+    'http://localhost:4200',
     'localhost:8000',
     'localhost',
     '127.0.0.1',
@@ -23,20 +24,34 @@ ALLOWED_HOSTS = [
     'http://www.miglig.com',
     'https://miglig.com',
     'http://api.miglig.com',
-    '.miglig.com'
+    '.miglig.com',
+    'http://www.miglig.com',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8000',
     'localhost:4200',
+    'http://localhost:4200',
     'localhost:8000',
     'localhost',
     'http://127.0.0.1',
     'http://www.miglig.com',
     'https://miglig.com',
     'http://api.miglig.com',
-    '.miglig.com'
+    '.miglig.com',
+    'www.miglig.com',
 ]
 
 
