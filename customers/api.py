@@ -37,21 +37,23 @@ class CustomerViewSet(viewsets.ViewSet):
 		password = request.data["password"]
 		hashed_password = hashlib.md5(password.encode()).hexdigest()
 
-		if "email" in request.data:
-			if CustomerPassword.objects.filter(password = hashed_password, user__email = request.data["email"], is_deleted = False).exists():
-				customer = CustomerPassword.objects.get(password = hashed_password, user__email = request.data["email"], is_deleted = False).user
+		if "email_mobile" in request.data:
+			if CustomerPassword.objects.filter(password = hashed_password, user__email = request.data["email_mobile"], is_deleted = False).exists():
+				customer = CustomerPassword.objects.get(password = hashed_password, user__email = request.data["email_mobile"], is_deleted = False).user
+			elif CustomerPassword.objects.filter(password = hashed_password, user__mobile = request.data["email_mobile"], is_deleted = False).exists():
+				customer = CustomerPassword.objects.get(password = hashed_password, user__mobile = request.data["email_mobile"], is_deleted = False).user	
 			else:
 				response["result"] = 0
 				response["errors"] = ["Password and user details doesn't matched"]
 				return Response(response, status=status.HTTP_200_OK)
 
-		elif "mobile" in request.data:	
-			if CustomerPassword.objects.filter(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).exists():
-				customer = CustomerPassword.objects.get(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).user	
-			else:
-				response["result"] = 0
-				response["errors"] = ["Password and user details doesn't matched"]
-				return Response(response, status=status.HTTP_200_OK)
+		# elif "mobile" in request.data:	
+		# 	if CustomerPassword.objects.filter(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).exists():
+		# 		customer = CustomerPassword.objects.get(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).user	
+		# 	else:
+		# 		response["result"] = 0
+		# 		response["errors"] = ["Password and user details doesn't matched"]
+		# 		return Response(response, status=status.HTTP_200_OK)
 		else:
 			response["result"] = 0
 			response["errors"] = ["submit complete form"]
