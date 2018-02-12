@@ -40,6 +40,7 @@ class CustomerPassword(models.Model):
     user = models.ForeignKey('Customer', on_delete=models.CASCADE,)
     password = models.CharField(blank = True, max_length = 100)
     password_open = models.CharField(blank = False, max_length = 100)
+    is_deleted = models.BooleanField(default = False)
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
     
     def save(self, *args, **kwargs):
