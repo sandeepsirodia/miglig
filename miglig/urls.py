@@ -18,7 +18,7 @@ from django.conf.urls import include, url
 from django.urls import path
 from rest_framework import routers
 from customers.api import *
-from production_house.api import *
+from production_house.api import ProductionHouseViewSet
 from django.views.generic import TemplateView
 
 
