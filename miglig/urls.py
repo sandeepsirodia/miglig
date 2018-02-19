@@ -32,7 +32,6 @@ urlpatterns = [
 	url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 	url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 	path('admin/', admin.site.urls),
-    url(r'^docs/', views.schema_view),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/', include(router.urls)),
 ]
