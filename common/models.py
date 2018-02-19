@@ -15,7 +15,7 @@ from django.core.validators import MinValueValidator
 class Genre(models.Model):
 
     name = models.CharField(blank = True, null = True, max_length = 50)
-    desription =  models.CharField(blank = True, null = True, max_length = 20)
+    desription =  models.CharField(blank = True, null = True, max_length = 450)
     
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 

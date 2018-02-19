@@ -21,5 +21,26 @@ class CompanyAdmin(SuperModelAdmin, SummernoteModelAdmin):
     list_display = ['pk', 'name', 'email', 'contact_name', 'contact_mobile', 'video_count', 'created_at']
 
  
+        
+class AlbumAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = Album
+    list_display = ['pk', 'name', 'logo', 'rating', 'description', 'genre', 'created_at']
+
+ 
+        
+class VideoAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = Video
+    list_display = ['pk', 'title', 'video', 'logo', 'rating', 'description', 'genre']
+
+ 
+        
+class AudioAdmin(SuperModelAdmin, SummernoteModelAdmin):
+    model = Audio
+    list_display = ['pk', 'title', 'audio', 'logo', 'rating', 'description', 'genre']
+
+ 
 
 admin.site.register(Company, CompanyAdmin)
+admin.site.register(Album, AlbumAdmin)
+admin.site.register(Video, VideoAdmin)
+admin.site.register(Audio, AudioAdmin)

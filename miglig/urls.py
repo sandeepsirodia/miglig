@@ -18,14 +18,13 @@ from django.conf.urls import include, url
 from django.urls import path
 from rest_framework import routers
 from customers.api import *
+from production_house.api import *
 from django.views.generic import TemplateView
-from miglig import views
-from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='Pastebin API')
 
 router = routers.DefaultRouter()
 router.register(r'user', CustomerViewSet, "user")
+router.register(r'content', ProductionHouseViewSet, "content")
 
 
 urlpatterns = [
@@ -33,10 +32,8 @@ urlpatterns = [
 	url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 	url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 	path('admin/', admin.site.urls),
-    # url(r'^docs1/', include(schema_view)),
     url(r'^docs/', views.schema_view),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/', include(router.urls)),
 ]
 
-# urlpatterns += router.urls

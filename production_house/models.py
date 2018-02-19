@@ -89,6 +89,6 @@ class Audio(models.Model):
         return str(self.pk)
 
     class Meta:
-        verbose_name_plural = "Video"
+        verbose_name_plural = "Audio"
 
 
