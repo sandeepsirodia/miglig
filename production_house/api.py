@@ -18,7 +18,7 @@ from .models import *
 from .serializers import *
 
 class ProductionHouseViewSet(viewsets.ViewSet):
-
+	@list_route(methods = ['get'])
 	def video(self, request):
 			
 		response = {}
@@ -32,6 +32,8 @@ class ProductionHouseViewSet(viewsets.ViewSet):
 
 		return Response(response, status=status.HTTP_200_OK)
 
+
+	@list_route(methods = ['get'])
 	def audio(self, request):
 			
 		response = {}
