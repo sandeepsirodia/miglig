@@ -21,17 +21,7 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def login(self, request):
-		"""
-		---
-		parameters:
-				- in: query
-			      name: offset
-			      schema:
-			        type: integer
-			      description: The number of items to skip before starting to collect the result set
-				
-		"""
-		
+			
 		response = {}
 
 		password = request.data["password"]
@@ -46,14 +36,6 @@ class CustomerViewSet(viewsets.ViewSet):
 				response["result"] = 0
 				response["errors"] = ["Password and user details doesn't matched"]
 				return Response(response, status=status.HTTP_200_OK)
-
-		# elif "mobile" in request.data:	
-		# 	if CustomerPassword.objects.filter(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).exists():
-		# 		customer = CustomerPassword.objects.get(password = hashed_password, user__mobile = request.data["mobile"], is_deleted = False).user	
-		# 	else:
-		# 		response["result"] = 0
-		# 		response["errors"] = ["Password and user details doesn't matched"]
-		# 		return Response(response, status=status.HTTP_200_OK)
 		else:
 			response["result"] = 0
 			response["errors"] = ["submit complete form"]
@@ -74,17 +56,6 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def verify_customer(self, request):
-		"""
-		---
-		parameters:
-				- name: token
-				  description: Transporter access token
-				  required: true
-				  type: string
-				  paramType: form
-				
-		"""
-		
 		response = {}
 
 		token = request.data["token"]
@@ -105,17 +76,6 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def logout(self, request):
-		"""
-		---
-		parameters:
-				- name: token
-				  description: Transporter access token
-				  required: true
-				  type: string
-				  paramType: form
-				
-		"""
-		
 		response = {}
 
 		token = request.data["token"]
@@ -133,21 +93,6 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def verify_mobile(self, request):
-		"""
-		---
-		parameters:
-				- name: mobile
-				  description: mobile
-				  required: true
-				  type: string
-				  paramType: form
-				- name: email
-				  description:email
-				  required: true
-				  type: string
-				  paramType: form
-				
-		"""
 		
 		response = {}
 
@@ -165,21 +110,6 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def test(self, request):
-		"""
-		---
-		parameters:
-				- name: mobile
-				  description: mobile
-				  required: true
-				  type: string
-				  paramType: form
-				- name: email
-				  description:email
-				  required: true
-				  type: string
-				  paramType: form
-				
-		"""
 		
 		response = {}
 		return Response(response, status=status.HTTP_200_OK)
@@ -187,36 +117,6 @@ class CustomerViewSet(viewsets.ViewSet):
 
 	@list_route(methods = ['post'])
 	def register(self, request):
-		"""
-		---
-		parameters:
-				- name: name
-				  description: name
-				  required: true
-				  type: string
-				  paramType: form
-				- name: email
-				  description: email
-				  required: true
-				  type: string
-				  paramType: form
-				- name: mobile
-				  description: mobile
-				  required: true
-				  type: string
-				  paramType: form
-				- name: password
-				  description: password
-				  required: true
-				  type: string
-				  paramType: form
-				- name: re_password
-				  description: password
-				  required: true
-				  type: string
-				  paramType: form
-				
-		"""
 		
 		response = {}
 
