@@ -51,7 +51,6 @@ rsa==3.4.2
 s3transfer==0.1.12
 simplejson==3.13.2
 six==1.10.0
-ssh-import-id==5.5
 stevedore==1.28.0
 uritemplate==3.0.0
 urllib3==1.13.1
