@@ -5,10 +5,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a17bc50371f88cbe1847fe251d5bde9b2a958b0b
 SECRET_KEY = 'vf-u%bj@f(ytd))6bi*3@*pxdo*fcp^=_$bddapf034njp_w$7'
 
 DATABASES = {
@@ -41,34 +37,34 @@ ALLOWED_HOSTS = [
     'https://api.miglig.com',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_HEADERS = (
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-)
-CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
-    'localhost:4200',
-    'http://localhost:4200',
-    'localhost:8000',
-    'localhost',
-    'http://127.0.0.1',
-    'http://www.miglig.com',
-    'https://miglig.com',
-    'http://api.miglig.com',
-    '.miglig.com',
-    'www.miglig.com',
-    'https://miglig.com',
-    'miglig.com',
-    'https://api.miglig.com',
-]
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_HEADERS = (
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# )
+# CORS_ORIGIN_WHITELIST = [
+#     'http://127.0.0.1:8000',
+#     'localhost:4200',
+#     'http://localhost:4200',
+#     'localhost:8000',
+#     'localhost',
+#     'http://127.0.0.1',
+#     'http://www.miglig.com',
+#     'https://miglig.com',
+#     'http://api.miglig.com',
+#     '.miglig.com',
+#     'www.miglig.com',
+#     'https://miglig.com',
+#     'miglig.com',
+#     'https://api.miglig.com',
+# ]
 
 
 
