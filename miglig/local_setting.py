@@ -12,7 +12,7 @@ DATABASES = {
       'ENGINE': 'django.db.backends.mysql',
       'NAME': 'miglig',
       'USER': 'miglig',
-      'PASSWORD': 'testing',
+      'PASSWORD': 'smokinaces',
       'HOST': 'localhost',
       'PORT': '',
    }
@@ -84,6 +84,23 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
+
+
+
+# AWS_ACCESS_KEY_ID = 'S2UP3VN5G633OF5DSUPK'
+# AWS_SECRET_ACCESS_KEY = '0+tkAfAESKYcTqte4Q3M0WPQ6yN+crYjBmaStiKAVvA'
+# AWS_STORAGE_BUCKET_NAME = 'miglig-space-1'
+# AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_LOCATION = 'nyc3'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 

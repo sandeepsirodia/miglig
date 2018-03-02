@@ -1,24 +1,25 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 
-#miglig/__pycache__
-#miglig/local_setting
-#requirements.txt
+__pycache__/
+*.py[cod]
 
-miglig.sock
+# C extensions
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
 static/
 
-/miglig/__pycache__
-/miglig/local_setting
-requirements.txt
-.gitignore
-__pycache__
-__pycache__/
-/__pycache__/
-*/__pycache__
-*/__pycache__/
-*./__pycache__/
-
-*/__pycache__/*
-
-customers/__pycache__/

@@ -18,7 +18,7 @@ from django.core.validators import MinValueValidator
 class Customer(models.Model):
 
     name = models.CharField(blank = True, null = True, max_length = 50)
-    photo = models.ImageField(blank = True, null = True)
+    photo = models.ImageField(blank = True, null = True, upload_to='user_photo')
     email =  models.CharField(blank = True, null = True, max_length = 30)
     mobile =  models.CharField(blank = True, null = True, max_length = 15)
     old_mobile = models.CharField(blank = True, null = True, max_length = 15)

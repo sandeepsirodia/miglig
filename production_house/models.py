@@ -17,7 +17,7 @@ from common.models import Genre
 class Company(models.Model):
 
     name = models.CharField(blank = True, null = True, max_length = 50)
-    logo = models.ImageField(blank = True, null = True)
+    logo = models.ImageField(blank = True, null = True, upload_to='company_logo')
     email =  models.CharField(blank = True, null = True, max_length = 30)
     contact_name =  models.CharField(blank = True, null = True, max_length = 20)
     contact_mobile =  models.CharField(blank = True, null = True, max_length = 15)
@@ -37,7 +37,7 @@ class Company(models.Model):
 class Album(models.Model):
 
     name = models.CharField(blank = True, null = True, max_length = 50)
-    logo = models.ImageField(blank = True, null = True)
+    logo = models.ImageField(blank = True, null = True, upload_to='album_logo')
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
     genre =  models.ForeignKey('common.Genre', on_delete=models.CASCADE, blank = True, null = True)
@@ -57,7 +57,7 @@ class Video(models.Model):
 
     title = models.CharField(blank = True, null = True, max_length = 50)
     video = models.CharField(blank = True, null = True, max_length = 50)
-    logo = models.ImageField(blank = True, null = True)
+    logo = models.ImageField(blank = True, null = True, upload_to='video_logo')
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
     genre =  models.ForeignKey('common.Genre', on_delete=models.CASCADE, blank = True, null = True)
@@ -77,7 +77,7 @@ class Audio(models.Model):
 
     title = models.CharField(blank = True, null = True, max_length = 50)
     audio = models.CharField(blank = True, null = True, max_length = 50)
-    logo = models.ImageField(blank = True, null = True)
+    logo = models.ImageField(blank = True, null = True, upload_to='audio_logo')
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
     genre =  models.ForeignKey('common.Genre', on_delete=models.CASCADE, blank = True, null = True)
