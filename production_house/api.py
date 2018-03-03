@@ -18,6 +18,22 @@ from .models import *
 from .serializers import *
 
 class ProductionHouseViewSet(viewsets.ViewSet):
+	
+	@list_route(methods = ['get'])
+	def main_video(self, request):
+			
+		response = {}
+		password = request.data["pk"]
+		videos = Video.objects.filter(pk = id)
+
+		serializer = VideoSerializer(videos, many = False).data
+
+		response["result"] = 1
+		response["data"] = serializer
+
+		return Response(response, status=status.HTTP_200_OK)
+
+
 	@list_route(methods = ['get'])
 	def video(self, request):
 			
