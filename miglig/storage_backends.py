@@ -3,12 +3,13 @@ from storages.backends.s3boto3 import S3Boto3Storage
 from tempfile import SpooledTemporaryFile
 
 class CustomS3Boto3Storage(S3Boto3Storage):
-"""
-This is our custom version of S3Boto3Storage that fixes a bug in boto3 where the passed in file is closed upon upload.
 
-https://github.com/boto/boto3/issues/929
-https://github.com/matthewwithanm/django-imagekit/issues/391
-"""
+    """
+    This is our custom version of S3Boto3Storage that fixes a bug in boto3 where the passed in file is closed upon upload.
+
+    https://github.com/boto/boto3/issues/929
+    https://github.com/matthewwithanm/django-imagekit/issues/391
+    """
 
     def _save_content(self, obj, content, parameters):
         """
