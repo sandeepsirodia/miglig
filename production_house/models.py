@@ -56,7 +56,7 @@ class Album(models.Model):
 class Video(models.Model):
 
     title = models.CharField(blank = True, null = True, max_length = 50)
-    video = models.CharField(blank = True, null = True, max_length = 50)
+    video = models.FileField(blank = True, null = True, upload_to='video')
     logo = models.ImageField(blank = True, null = True, upload_to='video_logo')
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
@@ -76,7 +76,7 @@ class Video(models.Model):
 class Audio(models.Model):
 
     title = models.CharField(blank = True, null = True, max_length = 50)
-    audio = models.CharField(blank = True, null = True, max_length = 50)
+    audio = models.FileField(blank = True, null = True, upload_to='audio')
     logo = models.ImageField(blank = True, null = True, upload_to='audio_logo')
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
