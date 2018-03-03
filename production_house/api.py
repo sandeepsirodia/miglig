@@ -24,7 +24,7 @@ class ProductionHouseViewSet(viewsets.ViewSet):
 			
 		response = {}
 		pk = request.data["pk"]
-		videos = Video.objects.filter(pk = pk, is_deleted = False)
+		videos = Video.objects.filter(pk = pk)
 
 		serializer = VideoSerializer(videos, many = False).data
 
