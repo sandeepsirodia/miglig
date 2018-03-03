@@ -70,7 +70,6 @@ CORS_ORIGIN_WHITELIST = [
 
 AWS_ACCESS_KEY_ID = 'S2UP3VN5G633OF5DSUPK'
 AWS_SECRET_ACCESS_KEY = '0+tkAfAESKYcTqte4Q3M0WPQ6yN+crYjBmaStiKAVvA'
-AWS_STORAGE_BUCKET_NAME = 'migligbucket'
 AWS_STORAGE_BUCKET_NAME = 'miglig-space-1'
 AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
@@ -84,9 +83,6 @@ STATICFILES_DIRS = [
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
 
