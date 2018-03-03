@@ -31,7 +31,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = [ ]
 
-DEFAULT_FILE_STORAGE='project.storage_backends.CustomS3Boto3Storage'
+DEFAULT_FILE_STORAGE='miglig.storage_backends.CustomS3Boto3Storage'
 
 
 # Application definition
