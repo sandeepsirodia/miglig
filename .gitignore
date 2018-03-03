@@ -22,4 +22,4 @@ var/
 .installed.cfg
 *.egg
 static/
-
+miglig/local_setting.py

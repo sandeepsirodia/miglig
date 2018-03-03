@@ -167,3 +167,4 @@ STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
+

@@ -11,8 +11,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.validators import MinValueValidator
 
 from common.models import Genre
-
-import cv2
+from miglig.settings import BASE_DIR
+# import cv2
+# import urllib.request
 
 
 class Company(models.Model):
@@ -69,19 +70,20 @@ class Video(models.Model):
     def __str__(self):
         return str(self.pk)
 
-    def save(self, *args, **kwargs):
-        print(cv2.__version__)
-        vidcap = cv2.VideoCapture(self.video)
-        success,image = vidcap.read()
-        success = True
-        while success:
-            cv2.imwrite("frame%d.jpg" % count, image)     # save frame as JPEG file
-            success,image = vidcap.read()
-            print ('Read a new frame: ', success)
-            self.logo = image
-            break
+    # def save(self, *args, **kwargs):
+    #     urllib.request.urlretrieve(self.video.url, ".r")
+    #     print(cv2.__version__)
+    #     vidcap = cv2.VideoCapture(self.video.url)
+    #     success,image = vidcap.read()
+    #     success = True
+    #     while success:
+    #         cv2.imwrite("frame%d.jpg" , image)     # save frame as JPEG file
+    #         success,image = vidcap.read()
+    #         print ('Read a new frame: ', success)
+    #         self.logo = image
+    #         break
 
-        super(Video, self).save(*args, **kwargs)
+    #     super(Video, self).save(*args, **kwargs)
 
 
     class Meta:
