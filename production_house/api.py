@@ -23,8 +23,8 @@ class ProductionHouseViewSet(viewsets.ViewSet):
 	def main_video(self, request):
 			
 		response = {}
-		password = request.data["pk"]
-		videos = Video.objects.filter(pk = id)
+		pk = request.data["pk"]
+		videos = Video.objects.filter(pk = pk, is_deleted = False)
 
 		serializer = VideoSerializer(videos, many = False).data
 
