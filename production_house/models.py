@@ -12,8 +12,8 @@ from django.core.validators import MinValueValidator
 
 from common.models import Genre
 from miglig.settings import BASE_DIR
-# import cv2
-# import urllib.request
+import cv2
+import urllib.request
 
 
 class Company(models.Model):
@@ -70,20 +70,24 @@ class Video(models.Model):
     def __str__(self):
         return str(self.pk)
 
-    # def save(self, *args, **kwargs):
-    #     urllib.request.urlretrieve(self.video.url, ".r")
-    #     print(cv2.__version__)
-    #     vidcap = cv2.VideoCapture(self.video.url)
-    #     success,image = vidcap.read()
-    #     success = True
-    #     while success:
-    #         cv2.imwrite("frame%d.jpg" , image)     # save frame as JPEG file
-    #         success,image = vidcap.read()
-    #         print ('Read a new frame: ', success)
-    #         self.logo = image
-    #         break
+    def save(self, *args, **kwargs):
+        super(Video, self).save(*args, **kwargs)
+        if self.video:
+            print(os.path.join(BASE_DIR, self.video.name[6:]))
+            urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
+            print(cv2.__version__)
+            vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:]) )
+            vidcap.set(1,200)
+            success,image = vidcap.read()
+            success = True
+            while success:
+                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:4] + ".jpg")  , image)     # save frame as JPEG file
+                success,image = vidcap.read()
+                print ('Read a new frame: ', success)
+                self.logo = open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:4] + ".jpg" ), 'rb')
+                break
 
-    #     super(Video, self).save(*args, **kwargs)
+            super(Video, self).save(*args, **kwargs)
 
 
     class Meta:
