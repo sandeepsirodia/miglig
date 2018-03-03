@@ -31,7 +31,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = [ ]
 
-DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Application definition
@@ -159,8 +159,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
