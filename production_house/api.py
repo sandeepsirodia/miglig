@@ -19,7 +19,7 @@ from .serializers import *
 
 class ProductionHouseViewSet(viewsets.ViewSet):
 	
-	@list_route(methods = ['get'])
+	@list_route(methods = ['post'])
 	def main_video(self, request):
 			
 		response = {}
