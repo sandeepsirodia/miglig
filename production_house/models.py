@@ -14,6 +14,10 @@ from common.models import Genre
 from miglig.settings import BASE_DIR
 import cv2
 import urllib.request
+from PIL import Image
+from PIL import Image, ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+from django.core.files import File as DjangoFile
 
 
 class Company(models.Model):
@@ -73,21 +77,24 @@ class Video(models.Model):
     def save(self, *args, **kwargs):
         super(Video, self).save(*args, **kwargs)
         if self.video:
-            print(os.path.join(BASE_DIR, self.video.name[6:]))
             urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
-            print(cv2.__version__)
             vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:]) )
             vidcap.set(1,200)
             success,image = vidcap.read()
             success = True
             while success:
-                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:4] + ".jpg")  , image)     # save frame as JPEG file
+                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg")  , image)     # save frame as JPEG file
                 success,image = vidcap.read()
-                print ('Read a new frame: ', success)
-                self.logo = open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:4] + ".jpg" ), 'rb')
+                
+                f = DjangoFile(open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ), "rb"), name = "frame_"+ self.video.name[6:][:-4] + ".jpg")
+                self.logo = f
                 break
-
+            
             super(Video, self).save(*args, **kwargs)
+            if os.path.exists(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" )):
+                os.remove(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ))
+            if os.path.exists(os.path.join(BASE_DIR, self.video.name[6:])):
+                os.remove(os.path.join(BASE_DIR, self.video.name[6:])) 
 
 
     class Meta:
