@@ -76,6 +76,8 @@ class Video(models.Model):
 
     def save(self, *args, **kwargs):
         super(Video, self).save(*args, **kwargs)
+        self.title = self.video.name[6:][:-4]
+        self.description = self.video.name[6:][:-4]
         if self.video:
             urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
             vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:]) )
