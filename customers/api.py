@@ -100,7 +100,6 @@ class CustomerViewSet(viewsets.ViewSet):
 		mobile = request.data["mobile"]
 
 		if not Customer.objects.filter(mobile = mobile, is_deleted = False).exists():
-			# write finction to send sms
 			pass
 		else:
 			response["result"] = 0
@@ -108,13 +107,7 @@ class CustomerViewSet(viewsets.ViewSet):
 			return Response(response, status=status.HTTP_200_OK)
 		return Response(response, status=status.HTTP_200_OK)
 
-	@list_route(methods = ['post'])
-	def test(self, request):
-		
-		response = {}
-		return Response(response, status=status.HTTP_200_OK)
-
-
+	
 	@list_route(methods = ['post'])
 	def register(self, request):
 		
@@ -158,3 +151,35 @@ class CustomerViewSet(viewsets.ViewSet):
 			response["errors"] = ["Password doesn't matched"]
 			return Response(response, status=status.HTTP_200_OK)
 
+
+	
+	@list_route(methods = ['post'])
+	def update_profile(self, request):
+		
+		response = {}
+
+		token = request.data["token"]
+		name = request.data["name"]
+		email = request.data["email"]
+		mobile = request.data["mobile"]
+		photo = request.data["photo"]
+
+		if not CustomerToken.objects.filter(token = token, is_deleted = False).exists():
+			customer = CustomerToken.objects.get(token = token, is_deleted = False).user
+			customer = customer.photo
+			customer = customer.name
+			customer = customer.mobile
+			customer = customer.email
+			customer.save()
+			
+			serializer = CustomerSerializer(customer, many = False).data
+
+			response["result"] = 1
+			response["data"] = serializer
+			return Response(response, status=status.HTTP_200_OK)
+
+		else:
+			response["result"] = 0
+			response["errors"] = ["token failed"]
+			return Response(response, status=status.HTTP_200_OK)
+	
