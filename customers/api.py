@@ -163,8 +163,8 @@ class CustomerViewSet(viewsets.ViewSet):
 		email = request.data["email"]
 		mobile = request.data["mobile"]
 
-		if not CustomerToken.objects.filter(token = token, is_deleted = False).exists():
-			customer = CustomerToken.objects.get(token = token, is_deleted = False).user
+		if not CustomerToken.objects.filter(token = token).exists():
+			customer = CustomerToken.objects.get(token = token).user
 			customer = customer.name
 			customer = customer.mobile
 			customer = customer.email
@@ -191,8 +191,8 @@ class CustomerViewSet(viewsets.ViewSet):
 		token = request.data["token"]
 		photo = request.data["photo"]
 
-		if not CustomerToken.objects.filter(token = token, is_deleted = False).exists():
-			customer = CustomerToken.objects.get(token = token, is_deleted = False).user
+		if not CustomerToken.objects.filter(token = token).exists():
+			customer = CustomerToken.objects.get(token = token).user
 			customer = customer.photo
 			customer.save()
 			
