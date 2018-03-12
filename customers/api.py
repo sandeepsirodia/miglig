@@ -162,14 +162,38 @@ class CustomerViewSet(viewsets.ViewSet):
 		name = request.data["name"]
 		email = request.data["email"]
 		mobile = request.data["mobile"]
+
+		if not CustomerToken.objects.filter(token = token, is_deleted = False).exists():
+			customer = CustomerToken.objects.get(token = token, is_deleted = False).user
+			customer = customer.name
+			customer = customer.mobile
+			customer = customer.email
+			customer.save()
+			
+			serializer = CustomerSerializer(customer, many = False).data
+
+			response["result"] = 1
+			response["data"] = serializer
+			return Response(response, status=status.HTTP_200_OK)
+
+		else:
+			response["result"] = 0
+			response["errors"] = ["token failed"]
+			return Response(response, status=status.HTTP_200_OK)
+	
+
+	
+	@list_route(methods = ['post'])
+	def update_profile_photos(self, request):
+		
+		response = {}
+
+		token = request.data["token"]
 		photo = request.data["photo"]
 
 		if not CustomerToken.objects.filter(token = token, is_deleted = False).exists():
 			customer = CustomerToken.objects.get(token = token, is_deleted = False).user
 			customer = customer.photo
-			customer = customer.name
-			customer = customer.mobile
-			customer = customer.email
 			customer.save()
 			
 			serializer = CustomerSerializer(customer, many = False).data
