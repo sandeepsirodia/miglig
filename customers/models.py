@@ -27,7 +27,7 @@ class Customer(models.Model):
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.name)
 
     class Meta:
         verbose_name_plural = "Customer"

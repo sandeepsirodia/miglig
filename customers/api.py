@@ -190,11 +190,13 @@ class CustomerViewSet(viewsets.ViewSet):
 
 		token = request.data["token"]
 		photo = request.data["photo"]
+		print(photo)
 
 		if CustomerToken.objects.filter(token = token).exists():
 			customer = CustomerToken.objects.get(token = token).user
+			print(customer)
 			customer = customer.photo
-			customer.save()
+			customer.save(photo.name, photo, True)
 			
 			serializer = CustomerSerializer(customer, many = False).data
 
