@@ -193,7 +193,7 @@ class CustomerViewSet(viewsets.ViewSet):
 
 		if CustomerToken.objects.filter(token = token).exists():
 			customer = CustomerToken.objects.get(token = token).user
-			# customer = customer.photo
+			customer = customer.photo
 			customer.save()
 			
 			serializer = CustomerSerializer(customer, many = False).data
