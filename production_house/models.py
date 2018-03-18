@@ -64,6 +64,7 @@ class Video(models.Model):
     title = models.CharField(blank = True, null = True, max_length = 50)
     video = models.FileField(blank = True, null = True, upload_to='video')
     logo = models.ImageField(blank = True, null = True, upload_to='video_logo')
+    album = models.ForeignKey('Album', null = True, on_delete=models.CASCADE,)
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
     genre =  models.ForeignKey('common.Genre', on_delete=models.CASCADE, blank = True, null = True)
@@ -79,24 +80,25 @@ class Video(models.Model):
         self.title = self.video.name[6:][:-4]
         self.description = self.video.name[6:][:-4]
         if self.video:
+            time = datetime.datetime.now()
             urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
-            vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:]) )
+            vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:] + time ) )
             vidcap.set(1,200)
             success,image = vidcap.read()
             success = True
             while success:
-                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg")  , image)     # save frame as JPEG file
+                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg")  , image)     # save frame as JPEG file
                 success,image = vidcap.read()
                 
-                f = DjangoFile(open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ), "rb"), name = "frame_"+ self.video.name[6:][:-4] + ".jpg")
+                f = DjangoFile(open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" ), "rb"), name = "frame_"+ self.video.name[6:][:-4] + time + ".jpg")
                 self.logo = f
                 break
             
             super(Video, self).save(*args, **kwargs)
-            if os.path.exists(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" )):
-                os.remove(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ))
-            if os.path.exists(os.path.join(BASE_DIR, self.video.name[6:])):
-                os.remove(os.path.join(BASE_DIR, self.video.name[6:])) 
+            if os.path.exists(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" )):
+                os.remove(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" ))
+            if os.path.exists(os.path.join(BASE_DIR, self.video.name[6:] + time )):
+                os.remove(os.path.join(BASE_DIR, self.video.name[6:] + time )) 
 
 
     class Meta:
@@ -109,6 +111,7 @@ class Audio(models.Model):
     title = models.CharField(blank = True, null = True, max_length = 50)
     audio = models.FileField(blank = True, null = True, upload_to='audio')
     logo = models.ImageField(blank = True, null = True, upload_to='audio_logo')
+    album = models.ForeignKey('Album', null = True, on_delete=models.CASCADE,)
     rating =  models.CharField(blank = True, null = True, max_length = 30)
     description =  models.CharField(blank = True, null = True, max_length = 700)
     genre =  models.ForeignKey('common.Genre', on_delete=models.CASCADE, blank = True, null = True)
