@@ -80,7 +80,7 @@ class Video(models.Model):
         self.title = self.video.name[6:][:-4]
         self.description = self.video.name[6:][:-4]
         if self.video:
-            time = datetime.datetime.now()
+            time = str(datetime.datetime.now())
             urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
             vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:] + time ) )
             vidcap.set(1,200)
