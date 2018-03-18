@@ -34,7 +34,7 @@ class Company(models.Model):
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.name)
 
     class Meta:
         verbose_name_plural = "Company"
@@ -52,7 +52,7 @@ class Album(models.Model):
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.name)
 
     class Meta:
         verbose_name_plural = "Album"
@@ -73,7 +73,7 @@ class Video(models.Model):
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.title)
 
     def save(self, *args, **kwargs):
         super(Video, self).save(*args, **kwargs)
@@ -120,7 +120,7 @@ class Audio(models.Model):
     created_at = models.DateTimeField(null = True, blank = True, default = datetime.datetime.now)
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.title)
 
     class Meta:
         verbose_name_plural = "Audio"
