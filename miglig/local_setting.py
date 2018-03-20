@@ -76,7 +76,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 AWS_LOCATION = 'static'
-S3_URL = 'http://%s.s3-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_URL = 'http://%s.s3-eu-west-1.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 #STATICFILES_DIRS = [
  #   os.path.join(BASE_DIR, 'static'),
 #]
