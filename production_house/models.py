@@ -82,23 +82,23 @@ class Video(models.Model):
         if self.video:
             time = str(datetime.datetime.now())
             urllib.request.urlretrieve(self.video.url, os.path.join(BASE_DIR, self.video.name[6:]))
-            vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:] + time ) )
+            vidcap = cv2.VideoCapture(os.path.join(BASE_DIR, self.video.name[6:] ) )
             vidcap.set(1,200)
             success,image = vidcap.read()
             success = True
             while success:
-                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg")  , image)     # save frame as JPEG file
+                cv2.imwrite(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg")  , image)     # save frame as JPEG file
                 success,image = vidcap.read()
                 
-                f = DjangoFile(open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" ), "rb"), name = "frame_"+ self.video.name[6:][:-4] + time + ".jpg")
+                f = DjangoFile(open(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ), "rb"), name = "frame_"+ self.video.name[6:][:-4] + ".jpg")
                 self.logo = f
                 break
             
             super(Video, self).save(*args, **kwargs)
-            if os.path.exists(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" )):
-                os.remove(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + time + ".jpg" ))
-            if os.path.exists(os.path.join(BASE_DIR, self.video.name[6:] + time )):
-                os.remove(os.path.join(BASE_DIR, self.video.name[6:] + time )) 
+            if os.path.exists(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" )):
+                os.remove(os.path.join(BASE_DIR, "frame_"+ self.video.name[6:][:-4] + ".jpg" ))
+            if os.path.exists(os.path.join(BASE_DIR, self.video.name[6:] )):
+                os.remove(os.path.join(BASE_DIR, self.video.name[6:] )) 
 
 
     class Meta:
